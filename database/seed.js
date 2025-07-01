@@ -1,16 +1,16 @@
 const db = require("./db");
-const { Duck } = require("./index");
+const { Users } = require("./index");
 
 const seed = async () => {
   db.logging = false;
   await db.sync({ force: true }); // Drop and recreate tables
-  const ducks = await Duck.bulkCreate([
-    { name: "James Pond" },
-    { name: "Quakie Chan" },
-    { name: "Goose" },
+  const Users = await Users.bulkCreate([
+    { name: "Ramses Sanchez" },
+    { name: "Emmanuel Rivas" },
+    { name: "Emmanuel Ruiz" },
   ]);
 
-  console.log(`🦆 Created ${ducks.length} ducks`);
+  console.log(`🦆 Created ${Users.length} Users`);
 
   console.log("🌱 Seeded the database");
   db.close();
@@ -19,4 +19,4 @@ const seed = async () => {
 seed();
 
 
-//test to add branch
+
