@@ -18,7 +18,7 @@ const Student = db.define("student", {
     },
   },
   imageUrl: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     defaultValue:
       "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F005%2F544%2F718%2Foriginal%2Fprofile-icon-design-free-vector.jpg&f=1&nofb=1&ipt=f9f61d5b4b2fc13cbcdf159d66145b4bdb786e2addcebb4424c51ba763d727f2",
   },
@@ -30,6 +30,16 @@ const Student = db.define("student", {
       max: 4.0,
     },
   },
+  // Add this campusId field:
+  campusId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: "campuses",  // this should match your Campus table name
+      key: "id",
+    },
+    allowNull: true, // student may not be enrolled in any campus
+  },
 });
 
 module.exports = Student;
+
