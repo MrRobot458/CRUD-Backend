@@ -1,22 +1,41 @@
 const db = require("./db");
-const { Users } = require("./index");
+const { Campus, Student } = require("./index");
 
 const seed = async () => {
-  db.logging = false;
-  await db.sync({ force: true }); // Drop and recreate tables
-  const Users = await Users.bulkCreate([
-    { name: "Ramses Sanchez" },
-    { name: "Emmanuel Rivas" },
-    { name: "Emmanuel Ruiz" },
+  await db.sync({ force: true });
+
+  const campuses = await Campus.bulkCreate([
+    {
+      name: "BMCC",
+      address: "4513 Manhattan Ave, NY",
+      description: "A nice place",
+    },
+    {
+      name: "Brooklyn College",
+      address: "999 Flatbush, Brooklyn, NY",
+      description: "Innovative and inclusive",
+    },
   ]);
 
-  console.log(`🦆 Created ${Users.length} Users`);
+  const students = await Student.bulkCreate([
+    {
+      firstName: "Ramses",
+      lastName: "Sanchez",
+      email: "RamsesCode@example.com",
+    },
+    {
+      firstName: "Emmanuel",
+      lastName: "Ruiz",
+      email: "Emmanuel-R@example.com",
+    },
+  ]);
 
-  console.log("🌱 Seeded the database");
-  db.close();
+  console.log("🌱 Seeded database with sample campuses and students");
+  await db.close();
 };
 
 seed();
+
 
 
 
