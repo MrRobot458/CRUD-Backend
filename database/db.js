@@ -6,7 +6,7 @@ const pg = require("pg");
 const dbName = "ttp_crud";
 
 const db = new Sequelize(
-  process.env.DATABASE_URL || "postgres://neondb_owner:npg_3tUaHKyzpQ0M@ep-nameless-fire-aduhetn6-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require",
+  process.env.DATABASE_URL || `postgres://localhost:5432/${dbName}`,
   {
     logging: false, // comment this line to enable logging
   }

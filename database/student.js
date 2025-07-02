@@ -30,7 +30,7 @@ const Student = db.define("student", {
       max: 4.0,
     },
   },
-  // Add this campusId field:
+  
   campusId: {
     type: DataTypes.INTEGER,
     references: {
