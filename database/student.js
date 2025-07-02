@@ -34,10 +34,10 @@ const Student = db.define("student", {
   campusId: {
     type: DataTypes.INTEGER,
     references: {
-      model: "campuses",  // this should match your Campus table name
+      model: "campuses",  
       key: "id",
     },
-    allowNull: true, // student may not be enrolled in any campus
+    allowNull: true, 
   },
 });
 
